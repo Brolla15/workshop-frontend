@@ -1,0 +1,33 @@
+<div class="forma">
+    <form class="form-container" #sensorTypeForm="ngForm">
+        <h2>You are adding new Sensor Type</h2>
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput required #name="ngModel" [(ngModel)]="sensorType!.name" name="name">
+            <mat-error *ngIf="name.invalid">
+                Name is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>From interval</mat-label>
+            <input matInput required #fromInterval="ngModel" [(ngModel)]="sensorType!.fromInterval" name="fromInterval">
+            <mat-error *ngIf="fromInterval.invalid">
+                From interval is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>To interval</mat-label>
+            <input matInput required #toInterval="ngModel" [(ngModel)]="sensorType!.toInterval" name="toInterval">
+            <mat-error *ngIf="toInterval.invalid">
+                To interval is required
+            </mat-error>
+        </mat-form-field>
+        
+        <div class="button-container">
+            <button type="submit" mat-raised-button (click)="OnSubmit()">Submit</button>
+        </div>
+    </form>
+</div>

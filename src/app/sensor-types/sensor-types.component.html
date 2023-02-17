@@ -1,0 +1,59 @@
+<div class="nav">
+    <h1>Sensor Types</h1>
+</div>
+<div class="but">
+    <button mat-raised-button (click)="onAddClick()">Add Sensor Type</button>
+    <button mat-raised-button (click)="goToPage()">Sensors</button>
+</div>
+<div class="basic">
+    <table mat-table [dataSource]="sensorTypes" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Sensor type name</th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="fromInterval">
+            <th mat-header-cell *matHeaderCellDef>From Interval </th>
+            <td mat-cell *matCellDef="let element"> {{element.fromInterval}} </td>
+        </ng-container>
+        <ng-container matColumnDef="toInterval">
+            <th mat-header-cell *matHeaderCellDef>To Interval </th>
+            <td mat-cell *matCellDef="let element"> {{element.toInterval}} </td>
+        </ng-container>
+        <ng-container matColumnDef="change">
+            <th mat-header-cell *matHeaderCellDef>
+                Change
+            </th>
+            <td mat-cell *matCellDef="let row">
+                <button mat-icon-button aria-label="change" (click)="onChangeClick(row.id)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef>
+                Delete
+            </th>
+
+            <td mat-cell *matCellDef="let row">
+
+                <button mat-icon-button aria-label="Delete" (click)="onDeleteClick(row.id)"><mat-icon>delete</mat-icon>
+
+                </button>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>
+<div>
+    <app-sensor-type-details *ngIf="edit" [sensorTypeId]="sensorTypeId" (refreshEvent)="refreshEvent()"></app-sensor-type-details>
+</div>
+<div>
+    <app-sensor-type-add *ngIf="add" (refreshEvent)="refreshEvent()"></app-sensor-type-add>
+</div>

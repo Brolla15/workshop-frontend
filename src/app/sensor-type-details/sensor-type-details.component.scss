@@ -1,0 +1,16 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row-reverse;
+}
+form{
+    width: 80%;
+}
+.forma{
+    margin-top: 45px;
+    justify-content: center;
+}

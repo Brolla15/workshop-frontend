@@ -1,0 +1,36 @@
+<div class="forma" *ngIf="sensor">
+    <h2>You are modifying: {{sensor.id}} Details</h2>
+
+    <form class="form-container" #sensorForm="ngForm">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Serial Number</mat-label>
+            <input matInput required #serialNumber="ngModel" [(ngModel)]="sensor.serialNumber" name="serialNumber">
+            <mat-error *ngIf="serialNumber.invalid">
+                Serial Number is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Value</mat-label>
+            <input matInput required #value="ngModel" [(ngModel)]="sensor.value" name="value">
+            <mat-error *ngIf="value.invalid">
+                Value is required
+            </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Sensor Type</mat-label>
+            <mat-select [(ngModel)]="sensor!.SensorTypeId" name="SensorTypeId">
+                <mat-option required *ngFor="let sensorType of sensorTypes" [value]="sensorType.id">
+                {{sensorType.name}}
+                </mat-option>
+            </mat-select>
+            <mat-error>Please choose Sensor type</mat-error>
+        </mat-form-field>
+
+        <div class="button-container">
+            <button type="submit" mat-raised-button (click)="OnSubmit()">Submit</button>
+        </div>
+    </form>
+</div>
